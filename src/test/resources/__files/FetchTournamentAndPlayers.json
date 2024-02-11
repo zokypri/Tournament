@@ -1,0 +1,20 @@
+{
+  "tournamentId": 1,
+  "rewardAmount": 4444,
+  "players": [
+    {
+      "playerId": 1,
+      "firstName": "Jan",
+      "lastName": "Banan",
+      "status": "ACTIVE"
+    },
+    {
+      "playerId": 2,
+      "firstName": "Janne",
+      "lastName": "Bannane",
+      "status": "INACTIVE"
+    }
+  ],
+  "currency": "EUR",
+  "name": "PAF_1"
+}

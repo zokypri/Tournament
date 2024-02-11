@@ -1,0 +1,14 @@
+[
+  {
+    "playerId": 1,
+    "firstName": "Jan",
+    "lastName": "Banan",
+    "status": "ACTIVE"
+  },
+  {
+    "playerId": 2,
+    "firstName": "Janne",
+    "lastName": "Bannane",
+    "status": "INACTIVE"
+  }
+]

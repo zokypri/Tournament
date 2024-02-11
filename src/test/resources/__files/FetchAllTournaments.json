@@ -1,0 +1,16 @@
+[
+  {
+    "tournamentId": 1,
+    "rewardAmount": 4444,
+    "players": [],
+    "currency": "EUR",
+    "name": "PAF_1"
+  },
+  {
+    "tournamentId": 2,
+    "rewardAmount": 3333,
+    "players": [],
+    "currency": "EUR",
+    "name": "PAF_2"
+  }
+]
