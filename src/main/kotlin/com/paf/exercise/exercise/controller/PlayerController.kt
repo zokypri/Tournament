@@ -1,10 +1,13 @@
 package com.paf.exercise.exercise.controller
 
+import com.paf.exercise.exercise.handler.ResponseError
 import com.paf.exercise.exercise.model.dto.AddPlayerRequest
 import com.paf.exercise.exercise.model.dto.PlayerDto
 import com.paf.exercise.exercise.service.PlayerService
 import io.swagger.v3.oas.annotations.Operation
+import io.swagger.v3.oas.annotations.media.Content
 import io.swagger.v3.oas.annotations.responses.ApiResponse
+import io.swagger.v3.oas.annotations.media.Schema
 import jakarta.validation.Valid
 import java.util.logging.Logger
 import org.springframework.web.bind.annotation.GetMapping
@@ -17,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("v1/exercise/players")
-class PlayerController (private val playerService: PlayerService){
+class PlayerController(private val playerService: PlayerService) {
 
     private val logger = Logger.getLogger(PlayerController::class.java.name)
 
@@ -31,11 +34,17 @@ class PlayerController (private val playerService: PlayerService){
             ApiResponse(
                 responseCode = "400",
                 description = "Bad request",
+                content = [Content(
+                    schema = Schema(implementation = ResponseError::class)
+                )]
             ),
             ApiResponse(
                 responseCode = "500",
                 description = "Internal server error",
-            ),
+                content = [Content(
+                    schema = Schema(implementation = ResponseError::class)
+                )]
+            )
         ],
     )
     @PostMapping
@@ -54,11 +63,17 @@ class PlayerController (private val playerService: PlayerService){
             ApiResponse(
                 responseCode = "400",
                 description = "Bad request",
+                content = [Content(
+                    schema = Schema(implementation = ResponseError::class)
+                )]
             ),
             ApiResponse(
                 responseCode = "500",
                 description = "Internal server error",
-            ),
+                content = [Content(
+                    schema = Schema(implementation = ResponseError::class)
+                )]
+            )
         ],
     )
     @PutMapping("inactivate/{playerId}")
@@ -77,10 +92,16 @@ class PlayerController (private val playerService: PlayerService){
             ApiResponse(
                 responseCode = "400",
                 description = "Bad request",
+                content = [Content(
+                    schema = Schema(implementation = ResponseError::class)
+                )]
             ),
             ApiResponse(
                 responseCode = "500",
                 description = "Internal server error",
+                content = [Content(
+                    schema = Schema(implementation = ResponseError::class)
+                )]
             ),
         ],
     )

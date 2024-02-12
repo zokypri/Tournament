@@ -1,10 +1,13 @@
 package com.paf.exercise.exercise.controller
 
+import com.paf.exercise.exercise.handler.ResponseError
 import com.paf.exercise.exercise.model.dto.TournamentDto
 import com.paf.exercise.exercise.model.dto.AddTournamentRequest
 import com.paf.exercise.exercise.model.dto.UpdateTournamentRequest
 import com.paf.exercise.exercise.service.TournamentService
 import io.swagger.v3.oas.annotations.Operation
+import io.swagger.v3.oas.annotations.media.Content
+import io.swagger.v3.oas.annotations.media.Schema
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import jakarta.validation.Valid
 import java.util.logging.Logger
@@ -33,11 +36,17 @@ class TournamentController (val tournamentService: TournamentService){
             ApiResponse(
                 responseCode = "400",
                 description = "Bad request",
+                content = [Content(
+                    schema = Schema(implementation = ResponseError::class)
+                )]
             ),
             ApiResponse(
                 responseCode = "500",
                 description = "Internal server error",
-            ),
+                content = [Content(
+                    schema = Schema(implementation = ResponseError::class)
+                )]
+            )
         ],
     )
     @PostMapping
@@ -71,7 +80,10 @@ class TournamentController (val tournamentService: TournamentService){
             ApiResponse(
                 responseCode = "500",
                 description = "Internal server error",
-            ),
+                content = [Content(
+                    schema = Schema(implementation = ResponseError::class)
+                )]
+            )
         ],
     )
     @DeleteMapping("/{tournamentId}")
@@ -90,11 +102,17 @@ class TournamentController (val tournamentService: TournamentService){
             ApiResponse(
                 responseCode = "400",
                 description = "Bad request",
+                content = [Content(
+                    schema = Schema(implementation = ResponseError::class)
+                )]
             ),
             ApiResponse(
                 responseCode = "500",
                 description = "Internal server error",
-            ),
+                content = [Content(
+                    schema = Schema(implementation = ResponseError::class)
+                )]
+            )
         ],
     )
     @GetMapping("/all")
@@ -113,11 +131,17 @@ class TournamentController (val tournamentService: TournamentService){
             ApiResponse(
                 responseCode = "400",
                 description = "Bad request",
+                content = [Content(
+                    schema = Schema(implementation = ResponseError::class)
+                )]
             ),
             ApiResponse(
                 responseCode = "500",
                 description = "Internal server error",
-            ),
+                content = [Content(
+                    schema = Schema(implementation = ResponseError::class)
+                )]
+            )
         ],
     )
     @GetMapping("/{tournamentId}")

@@ -55,9 +55,6 @@ This makes some of the test fail in the happy case and the Json files holding th
 There is probably some way to fix the sequence but since I lack time I had to prioritize
 I tried to reset the sequence after each test with sql script and a @BeforeEach setup that did not work
 
-# Validation
-Validating the input data is done with 
-
 # Improvements
 
     1. Unit tests for Player service and controller as done for Tournament
