@@ -8,7 +8,7 @@ There are two DB tables Tournament and Player. One tournament can hold several p
 Tournament DB holds a list of Players so there is a foreign key from Player to the Tournament table
 
 The interaction between Kotlin and DB is done with SpringBoot JPA library which uses Hibernate implementation by default
-
+ff
 Since Kotlin data classes and Spring JPA is not working well together perhaps a better solution would have been
 to use the Spring data JDBC starter instead alternatively use Kotlin class instead of data class. 
 
