@@ -28,7 +28,7 @@ class PlayerController(private val playerService: PlayerService) {
         summary = "Add a player to a tournament.",
         responses = [
             ApiResponse(
-                responseCode = "200",
+                responseCode = "201",
                 description = "Added a new player to a tournament",
             ),
             ApiResponse(

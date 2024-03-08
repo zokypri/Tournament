@@ -3,6 +3,7 @@ package com.paf.exercise.exercise.controller
 import com.paf.exercise.exercise.handler.ResponseError
 import com.paf.exercise.exercise.model.dto.TournamentDto
 import com.paf.exercise.exercise.model.dto.AddTournamentRequest
+import com.paf.exercise.exercise.model.dto.TournamentOverviewDto
 import com.paf.exercise.exercise.model.dto.UpdateTournamentRequest
 import com.paf.exercise.exercise.service.TournamentService
 import io.swagger.v3.oas.annotations.Operation
@@ -30,8 +31,8 @@ class TournamentController (val tournamentService: TournamentService){
         summary = "Add a tournament.",
         responses = [
             ApiResponse(
-                responseCode = "200",
-                description = "Added a new tournament",
+                responseCode = "201",
+                description = "Created a new tournament",
             ),
             ApiResponse(
                 responseCode = "400",
@@ -116,7 +117,7 @@ class TournamentController (val tournamentService: TournamentService){
         ],
     )
     @GetMapping("/all")
-    fun getAllTournaments(): List<TournamentDto> {
+    fun getAllTournaments(): List<TournamentOverviewDto> {
         logger.info("Received request to fetch all tournaments")
         return tournamentService.getAllTournaments()
     }

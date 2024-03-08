@@ -7,17 +7,18 @@ import com.paf.exercise.exercise.model.dto.AddTournamentRequest
 import com.paf.exercise.exercise.model.dto.Currency
 import com.paf.exercise.exercise.model.dto.PlayerDto
 import com.paf.exercise.exercise.model.dto.TournamentDto
+import com.paf.exercise.exercise.model.dto.TournamentOverviewDto
 
 
-fun mockTournamentsDto(): List<TournamentDto> {
+fun mockTournamentsDto(): List<TournamentOverviewDto> {
     return listOf(
-        TournamentDto(
+        TournamentOverviewDto(
             tournamentId = 1L,
             currency = Currency.EUR,
             rewardAmount = 4444,
             name = "PAF_1",
         ),
-        TournamentDto(
+        TournamentOverviewDto(
             tournamentId = 2L,
             currency = Currency.EUR,
             rewardAmount = 3333,

@@ -5,6 +5,7 @@ import com.paf.exercise.exercise.model.db.Tournament
 import com.paf.exercise.exercise.model.dto.AddTournamentRequest
 import com.paf.exercise.exercise.model.dto.Currency
 import com.paf.exercise.exercise.model.dto.TournamentDto
+import com.paf.exercise.exercise.model.dto.TournamentOverviewDto
 import com.paf.exercise.exercise.model.dto.UpdateTournamentRequest
 import com.paf.exercise.exercise.repository.TournamentRepository
 import java.util.logging.Logger
@@ -31,7 +32,7 @@ class TournamentService(private val tournamentRepository: TournamentRepository) 
         return tournament.tournamentId ?: throw TournamentNotFoundException() // this should NEVER happen!
     }
 
-    fun getAllTournaments(): List<TournamentDto> {
+    fun getAllTournaments(): List<TournamentOverviewDto> {
         logger.info("Fetch all tournaments")
         return tournamentRepository
             .findAll()

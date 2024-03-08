@@ -2,10 +2,15 @@ package com.paf.exercise.exercise.model.dto
 
 import com.paf.exercise.exercise.exception.TournamentNotFoundException
 import com.paf.exercise.exercise.model.db.Tournament
-import jakarta.validation.Valid
 import jakarta.validation.constraints.Min
 import jakarta.validation.constraints.NotBlank
 
+data class TournamentOverviewDto(
+    val tournamentId: Long,
+    val rewardAmount: Int,
+    val currency: Currency,
+    val name: String,
+)
 data class TournamentDto(
     val tournamentId: Long,
     val rewardAmount: Int,
@@ -23,8 +28,8 @@ data class TournamentDto(
                 name = tournament.name
             )
 
-        fun mapToTournamentSlimmedDto(tournament: Tournament) : TournamentDto =
-            TournamentDto(
+        fun mapToTournamentSlimmedDto(tournament: Tournament) : TournamentOverviewDto =
+            TournamentOverviewDto(
                 tournamentId = tournament.tournamentId ?: throw TournamentNotFoundException(),
                 rewardAmount = tournament.rewardAmount,
                 currency = tournament.currency,
