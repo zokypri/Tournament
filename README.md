@@ -1,7 +1,7 @@
 # Description
 This microservice was created for the PAF test exercise to simulate a Tournament service
 The service is written in Kotlin with the latest stable Java version and the latest stable SpringBoot version
-Java 21 and SpringBoot 3.2.2 .
+Java 21 and SpringBoot 3.1.5 
 
 # DB
 There are two DB tables Tournament and Player. One tournament can hold several players.
