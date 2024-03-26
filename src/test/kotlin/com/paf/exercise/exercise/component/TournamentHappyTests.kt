@@ -16,11 +16,21 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
+import org.springframework.kafka.test.context.EmbeddedKafka
+import org.springframework.test.annotation.DirtiesContext
+import org.springframework.test.context.TestPropertySource
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 
 @SpringBootTest
+@TestPropertySource(properties = [
+    "spring.kafka.bootstrap-servers=localhost:9092",
+    "spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer",
+    "spring.kafka.producer.value-serializer=org.springframework.kafka.support.serializer.JsonSerializer"
+])
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+@EmbeddedKafka(partitions = 1, controlledShutdown = true, brokerProperties = ["listeners=PLAINTEXT://localhost:9092", "port=9092"])
 @AutoConfigureMockMvc
 class TournamentHappyTests {
 
