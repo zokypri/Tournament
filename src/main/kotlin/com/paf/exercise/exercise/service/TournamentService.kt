@@ -53,10 +53,18 @@ class TournamentService(private val tournamentRepository: TournamentRepository) 
     @Transactional
     fun updateReward(tournamentId: Long, updateTournamentRequest: UpdateTournamentRequest) {
         logger.info("Updating tournament with id: $tournamentId")
-        tournamentRepository.findByIdOrNull(tournamentId)?.run {
+        fetchTournamentOrThrow(tournamentId).run {
             tournamentRepository.save(copy(rewardAmount = updateTournamentRequest.reward))
             logger.info("Tournament with id: $tournamentId was updated")
-        } ?: throw TournamentNotFoundException(tournamentId)
+        }
+    }
+
+    fun fetchTournamentOrThrow(tournamentId: Long): Tournament {
+        return tournamentRepository.findByIdOrNull(tournamentId)
+            ?: run {
+                logger.severe("TournamentNotFoundException is thrown for id: $tournamentId")
+                throw TournamentNotFoundException(tournamentId)
+            }
     }
 
     @Transactional

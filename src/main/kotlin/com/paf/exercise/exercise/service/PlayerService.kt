@@ -6,20 +6,20 @@ import com.paf.exercise.exercise.model.db.Status
 import com.paf.exercise.exercise.model.dto.AddPlayerRequest
 import com.paf.exercise.exercise.model.dto.PlayerDto
 import com.paf.exercise.exercise.repository.PlayerRepository
-import java.lang.RuntimeException
 import java.util.logging.Logger
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
-class PlayerService (private val playerRepository: PlayerRepository){
+class PlayerService (private val playerRepository: PlayerRepository, private val tournamentService: TournamentService){
 
     private val logger = Logger.getLogger(PlayerService::class.java.name)
 
     @Transactional
     fun addPlayer(addOPlayerRequest: AddPlayerRequest): Long {
         val tournamentId = addOPlayerRequest.tournamentId
+        tournamentService.fetchTournamentOrThrow(tournamentId)
         logger.info("Saving player to tournament with id: $tournamentId")
         val player = playerRepository.save(
             Player(
